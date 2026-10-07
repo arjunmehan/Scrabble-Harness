@@ -1,0 +1,15 @@
+{
+  "source_workspace": "/Users/arjunmehan/Documents/Codex/2026-10-06/i-have-an-idea-for-a",
+  "project_root": "/Users/arjunmehan/Documents/Code/Scrabble Harness",
+  "copied_files_and_symlinks": 1614,
+  "copied_file_bytes": 34292162,
+  "copy_hashes_verified_before_path_updates": true,
+  "unchanged_file_hashes_reverified_before_source_removal": true,
+  "development_environment": ".venv",
+  "source_and_native_tests": "232 passed",
+  "installed_smoke": "passed",
+  "historical_environment_launcher": "repaired and verified",
+  "network_downloads": false,
+  "development_package_link": ".venv/lib/python3.13/site-packages/scrabble_harness",
+  "development_package_link_reason": "Keep editable imports working when macOS marks .pth files hidden."
+}

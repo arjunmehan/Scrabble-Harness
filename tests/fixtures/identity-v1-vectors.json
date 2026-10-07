@@ -1,0 +1,99 @@
+{
+  "identity_version": 1,
+  "source_fixture": "opening-blank-v1.json",
+  "observing_player": 0,
+  "observation_id": "obs_v1_db3959b5bf14b053ca787d53f209569672d2eb0c902b7cb01ca5f2b23fd1ac4d",
+  "candidates": [
+    {
+      "name": "pass",
+      "move": {
+        "schema_version": 1,
+        "kind": "pass"
+      },
+      "candidate_id": "cand_v1_01388ba1f2364865ee2ce269a25ad1f2dc1bf5966b133449dc4f3ddadd48634c"
+    },
+    {
+      "name": "exchange-with-blank",
+      "move": {
+        "schema_version": 1,
+        "kind": "exchange",
+        "tiles": [
+          "?",
+          "A",
+          "A"
+        ]
+      },
+      "candidate_id": "cand_v1_95755b0ee2579091edf3cd228441c44eba868f780f7a3d3e701de36c3fefc5fb"
+    },
+    {
+      "name": "exchange-fewer-tiles",
+      "move": {
+        "schema_version": 1,
+        "kind": "exchange",
+        "tiles": [
+          "?",
+          "A"
+        ]
+      },
+      "candidate_id": "cand_v1_f66749753b617d3aa6da20edc0e90143d256585c240192786507a1efebd8e6db"
+    },
+    {
+      "name": "place-ordinary-q",
+      "move": {
+        "schema_version": 1,
+        "kind": "place",
+        "tiles": [
+          {
+            "schema_version": 1,
+            "row": 8,
+            "column": 7,
+            "displayed_letter": "Q",
+            "is_blank": false
+          }
+        ]
+      },
+      "candidate_id": "cand_v1_3eba2913abd610f96e90a1db5c4ba52529029b7b66709eb3801fa42981d9abf2"
+    },
+    {
+      "name": "place-blank-q",
+      "move": {
+        "schema_version": 1,
+        "kind": "place",
+        "tiles": [
+          {
+            "schema_version": 1,
+            "row": 8,
+            "column": 7,
+            "displayed_letter": "Q",
+            "is_blank": true
+          }
+        ]
+      },
+      "candidate_id": "cand_v1_cc6bf11eb5dd3aad32bae866adf5e4c7dc9db381ceb2ef4e962656042c33df7c"
+    },
+    {
+      "name": "place-two-tiles",
+      "move": {
+        "schema_version": 1,
+        "kind": "place",
+        "tiles": [
+          {
+            "schema_version": 1,
+            "row": 8,
+            "column": 8,
+            "displayed_letter": "B",
+            "is_blank": false
+          },
+          {
+            "schema_version": 1,
+            "row": 8,
+            "column": 7,
+            "displayed_letter": "A",
+            "is_blank": false
+          }
+        ]
+      },
+      "candidate_id": "cand_v1_51bb6dcdd2c2f2d3465c5b9e03b0f2fd38b34e3cd5519d7bcb19109b8a734077"
+    }
+  ]
+}

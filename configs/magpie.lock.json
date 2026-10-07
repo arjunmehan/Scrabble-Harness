@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "engine": {
+    "repository": "https://github.com/jvc56/MAGPIE.git",
+    "commit": "375ad953e20d4edc582d345e233e8d8a2586cc06",
+    "license": "GPL-3.0",
+    "build_command": [
+      "make",
+      "-j4",
+      "libmagpie"
+    ],
+    "board_size": 15,
+    "rack_size": 7
+  },
+  "data": {
+    "repository": "https://github.com/jvc56/MAGPIE-DATA",
+    "commit": "adf29316fcb2d7bd78a832e198c1bdfc112efa89",
+    "assets": [
+      {
+        "path": "layouts/standard15.txt",
+        "sha256": "c1a81c35a7730f64abcca23c8c56cc872e892a68f95289a4189b373c8cc5a01f"
+      },
+      {
+        "path": "letterdistributions/english.csv",
+        "sha256": "84d4b2c43d6df78679cde8ac1186cdce59c47668eed1630f15e660df70caefb7"
+      },
+      {
+        "path": "strategy/winpct_english.csv",
+        "sha256": "34c072d285e64973cfa0bd044f4d70f128677578c30993a35d85a5c607bc0417"
+      }
+    ]
+  },
+  "fixture": {
+    "name": "NWL_HARNESS_SMOKE",
+    "path": "tests/fixtures/native/NWL_HARNESS_SMOKE.txt",
+    "sha256": "97f9e1a313518f06f38e1391ecf76bf2517d7d8f6c4151413200acc4f421822a",
+    "leave_values": "generated empty KLV (all zero)",
+    "word_map": false,
+    "strength_benchmark": false
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "purpose": "engine limits/recovery acceptance with toy dictionary; not a strength benchmark",
+  "engine_commit": "375ad953e20d4edc582d345e233e8d8a2586cc06",
+  "configuration_id": "magpie_v1_d430dc5bf984ae1e4485ddf705f7f266050b9d5d4a5b42484c5851e6ea6a6a41",
+  "games": [
+    {
+      "seed": 7,
+      "turns": 12,
+      "scores": [
+        -12,
+        -12
+      ],
+      "terminal_reason": "scoreless_limit",
+      "restored_revisions": [
+        3,
+        8
+      ],
+      "compared_states": 13,
+      "all_states_equal": true,
+      "all_selections_equal": true,
+      "final_state_sha256": "00e7f83bf180bbd752ee23c5778c3f2bc5a796d0175f5301daa99255659cf940"
+    },
+    {
+      "seed": 42,
+      "turns": 33,
+      "scores": [
+        10,
+        30
+      ],
+      "terminal_reason": "scoreless_limit",
+      "restored_revisions": [
+        3,
+        8,
+        17
+      ],
+      "compared_states": 34,
+      "all_states_equal": true,
+      "all_selections_equal": true,
+      "final_state_sha256": "e118a38f2833fa7cd1d9c03c35a4bdc49b75adc1f02a79b16caccd01511cb6b6"
+    },
+    {
+      "seed": 73,
+      "turns": 16,
+      "scores": [
+        -3,
+        12
+      ],
+      "terminal_reason": "scoreless_limit",
+      "restored_revisions": [
+        3,
+        8
+      ],
+      "compared_states": 17,
+      "all_states_equal": true,
+      "all_selections_equal": true,
+      "final_state_sha256": "93926a90f23b9f17a2422c9e2dab8d688991889437703c8c7d55d126e9155060"
+    }
+  ],
+  "stress_cycles": [
+    {
+      "cycle": 0,
+      "timeout_reported_work": 2349,
+      "cancel_reported_work": 890,
+      "recovered_reported_work": 12,
+      "seeded_values_preserved": true,
+      "unresolved_work_requests": 2
+    },
+    {
+      "cycle": 1,
+      "timeout_reported_work": 2258,
+      "cancel_reported_work": 707,
+      "recovered_reported_work": 12,
+      "seeded_values_preserved": true,
+      "unresolved_work_requests": 2
+    },
+    {
+      "cycle": 2,
+      "timeout_reported_work": 1933,
+      "cancel_reported_work": 730,
+      "recovered_reported_work": 12,
+      "seeded_values_preserved": true,
+      "unresolved_work_requests": 2
+    }
+  ],
+  "request_count": 270,
+  "event_counts": {
+    "request_started": 270,
+    "worker_started": 32,
+    "request_finished": 264,
+    "worker_retired": 32,
+    "worker_closed": 20,
+    "analysis_result": 10,
+    "request_failed": 6
+  },
+  "request_pairing_verified": true,
+  "private_state_in_trace": false,
+  "limitations": [
+    "Abrupt host power loss is not simulated; fsync publication failures use fault-injection tests.",
+    "Killed analysis has unknown completed work and is not reported as zero.",
+    "No LLM/API calls, exact endgame solver, or aggregate run-budget enforcement."
+  ]
+}

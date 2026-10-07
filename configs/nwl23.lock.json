@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "lexicon_id": "NWL23",
+  "edition": "NASPA Word List 2023",
+  "word_count": 196601,
+  "leave_count": 914624,
+  "repository": "https://github.com/jvc56/MAGPIE-DATA",
+  "data_commit": "adf29316fcb2d7bd78a832e198c1bdfc112efa89",
+  "engine_commit": "375ad953e20d4edc582d345e233e8d8a2586cc06",
+  "assets": [
+    {
+      "path": "lexica/NWL23.kwg",
+      "bytes": 4719596,
+      "git_blob_sha1": "3ee57962d27a5af9465f7ecaa57402d62396fdbe",
+      "sha256": "3e74af981fdd974e107283f686da0fe4b7ec84ad0d825d444330c338c33b91ba"
+    },
+    {
+      "path": "lexica/NWL23.klv2",
+      "bytes": 3667340,
+      "git_blob_sha1": "c3967e17332de9897c32d0b846ebfd4a2da17e37",
+      "sha256": "37dea945c29c3773eb4cd5a4117f3d3256c8b548cd3bf3b5ce8a219cb5e0a3fa"
+    }
+  ],
+  "official_edition_reference": "https://www.scrabbleplayers.org/w/NWL2023",
+  "licensing_reference": "https://www.scrabbleplayers.org/w/Licensing",
+  "redistribute_dictionary": false
+}

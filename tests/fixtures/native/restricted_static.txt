@@ -1,0 +1,5 @@
+1:  8H QI AERT?   22 21.30    
+2:  8H qI AEQRT   2  1.30     
+3:  pass  AEIQRT? 0  -1000.00 
+
+Showing 3 of 3 plays

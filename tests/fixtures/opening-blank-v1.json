@@ -1,0 +1,317 @@
+{
+  "schema_version": 1,
+  "game_id": "fixture-game",
+  "revision": 1,
+  "board": {
+    "schema_version": 1,
+    "tiles": [
+      {
+        "schema_version": 1,
+        "row": 7,
+        "column": 7,
+        "displayed_letter": "Q",
+        "is_blank": true
+      },
+      {
+        "schema_version": 1,
+        "row": 7,
+        "column": 8,
+        "displayed_letter": "I",
+        "is_blank": false
+      }
+    ]
+  },
+  "racks": [
+    [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "?"
+    ],
+    [
+      "G",
+      "H",
+      "I",
+      "J",
+      "K",
+      "L",
+      "M"
+    ]
+  ],
+  "draw_state": {
+    "schema_version": 1,
+    "ordered_tiles": [
+      "A",
+      "A",
+      "A",
+      "A",
+      "A",
+      "A",
+      "A",
+      "A",
+      "B",
+      "C",
+      "D",
+      "D",
+      "D",
+      "E",
+      "E",
+      "E",
+      "E",
+      "E",
+      "E",
+      "E",
+      "E",
+      "E",
+      "E",
+      "E",
+      "F",
+      "G",
+      "G",
+      "H",
+      "I",
+      "I",
+      "I",
+      "I",
+      "I",
+      "I",
+      "I",
+      "L",
+      "L",
+      "L",
+      "M",
+      "N",
+      "N",
+      "N",
+      "N",
+      "N",
+      "N",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "P",
+      "P",
+      "Q",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "S",
+      "S",
+      "S",
+      "S",
+      "T",
+      "T",
+      "T",
+      "T",
+      "T",
+      "T",
+      "U",
+      "U",
+      "U",
+      "U",
+      "V",
+      "V",
+      "W",
+      "W",
+      "X",
+      "Y",
+      "Y",
+      "Z"
+    ],
+    "rng_algorithm": "fixture-rng-v1",
+    "rng_state": "fixture-state-a"
+  },
+  "scores": [
+    2,
+    0
+  ],
+  "active_player": 1,
+  "scoreless_turns": 0,
+  "ruleset_id": "english-test-v1",
+  "lexicon_id": "fixture-lexicon-v1",
+  "tile_distribution": {
+    "schema_version": 1,
+    "counts": [
+      {
+        "schema_version": 1,
+        "tile": "?",
+        "count": 2
+      },
+      {
+        "schema_version": 1,
+        "tile": "A",
+        "count": 9
+      },
+      {
+        "schema_version": 1,
+        "tile": "B",
+        "count": 2
+      },
+      {
+        "schema_version": 1,
+        "tile": "C",
+        "count": 2
+      },
+      {
+        "schema_version": 1,
+        "tile": "D",
+        "count": 4
+      },
+      {
+        "schema_version": 1,
+        "tile": "E",
+        "count": 12
+      },
+      {
+        "schema_version": 1,
+        "tile": "F",
+        "count": 2
+      },
+      {
+        "schema_version": 1,
+        "tile": "G",
+        "count": 3
+      },
+      {
+        "schema_version": 1,
+        "tile": "H",
+        "count": 2
+      },
+      {
+        "schema_version": 1,
+        "tile": "I",
+        "count": 9
+      },
+      {
+        "schema_version": 1,
+        "tile": "J",
+        "count": 1
+      },
+      {
+        "schema_version": 1,
+        "tile": "K",
+        "count": 1
+      },
+      {
+        "schema_version": 1,
+        "tile": "L",
+        "count": 4
+      },
+      {
+        "schema_version": 1,
+        "tile": "M",
+        "count": 2
+      },
+      {
+        "schema_version": 1,
+        "tile": "N",
+        "count": 6
+      },
+      {
+        "schema_version": 1,
+        "tile": "O",
+        "count": 8
+      },
+      {
+        "schema_version": 1,
+        "tile": "P",
+        "count": 2
+      },
+      {
+        "schema_version": 1,
+        "tile": "Q",
+        "count": 1
+      },
+      {
+        "schema_version": 1,
+        "tile": "R",
+        "count": 6
+      },
+      {
+        "schema_version": 1,
+        "tile": "S",
+        "count": 4
+      },
+      {
+        "schema_version": 1,
+        "tile": "T",
+        "count": 6
+      },
+      {
+        "schema_version": 1,
+        "tile": "U",
+        "count": 4
+      },
+      {
+        "schema_version": 1,
+        "tile": "V",
+        "count": 2
+      },
+      {
+        "schema_version": 1,
+        "tile": "W",
+        "count": 2
+      },
+      {
+        "schema_version": 1,
+        "tile": "X",
+        "count": 1
+      },
+      {
+        "schema_version": 1,
+        "tile": "Y",
+        "count": 2
+      },
+      {
+        "schema_version": 1,
+        "tile": "Z",
+        "count": 1
+      }
+    ]
+  },
+  "public_history": [
+    {
+      "schema_version": 1,
+      "revision": 1,
+      "player": 0,
+      "move": {
+        "schema_version": 1,
+        "kind": "place",
+        "tiles": [
+          {
+            "schema_version": 1,
+            "row": 7,
+            "column": 7,
+            "displayed_letter": "Q",
+            "is_blank": true
+          },
+          {
+            "schema_version": 1,
+            "row": 7,
+            "column": 8,
+            "displayed_letter": "I",
+            "is_blank": false
+          }
+        ]
+      },
+      "score": 2,
+      "scores_after": [
+        2,
+        0
+      ]
+    }
+  ],
+  "status": "in_progress",
+  "terminal_reason": null
+}

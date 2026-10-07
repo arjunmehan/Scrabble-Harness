@@ -1,0 +1,270 @@
+{
+  "schema_version": 1,
+  "purpose": "interface smoke probe, not playing-strength evaluation",
+  "setup": {
+    "schema_version": 1,
+    "engine_commit": "375ad953e20d4edc582d345e233e8d8a2586cc06",
+    "data_commit": "adf29316fcb2d7bd78a832e198c1bdfc112efa89",
+    "lock_sha256": "dae80d0968c9401143829193c45ee2b2c0f3aaff738ee55a31f6db5b0e462003",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "architecture": "arm64",
+    "compiler": "Apple clang version 21.0.0 (clang-2100.1.1.101)",
+    "build_command": [
+      "make",
+      "-j4",
+      "libmagpie"
+    ],
+    "library": "/Users/arjunmehan/Documents/Code/Scrabble Harness/work/scrabble-harness-step4/MAGPIE/bin/libmagpie.dylib",
+    "library_sha256": "55b5157ea526fa0de880e94ec1be6dd97363b9b647cad8e31af20a31c79e40bc",
+    "data": "/Users/arjunmehan/Documents/Code/Scrabble Harness/work/scrabble-harness-step4/repro-native/data",
+    "input_asset_sha256": {
+      "layouts/standard15.txt": "c1a81c35a7730f64abcca23c8c56cc872e892a68f95289a4189b373c8cc5a01f",
+      "letterdistributions/english.csv": "84d4b2c43d6df78679cde8ac1186cdce59c47668eed1630f15e660df70caefb7",
+      "strategy/winpct_english.csv": "34c072d285e64973cfa0bd044f4d70f128677578c30993a35d85a5c607bc0417"
+    },
+    "lexicon_sha256": "97f9e1a313518f06f38e1391ecf76bf2517d7d8f6c4151413200acc4f421822a",
+    "kwg_sha256": "32a1a3d5fa6ae3752a7b72c84ec9d216463290b56b1378433f5201c53693f808",
+    "klv_sha256": "e1456d30ed70958752834059cdc10868a7ff3e60cb07d84563405c811d50f486",
+    "strength_benchmark": false
+  },
+  "reported_engine_version": "0.0.0",
+  "all_checks_passed": true,
+  "checks": {
+    "generation": {
+      "passed": true,
+      "candidate_count": 10,
+      "first_move": {
+        "index": 1,
+        "notation": "8G QI",
+        "leave": "AERT?",
+        "score": 22,
+        "static_equity": 22.0
+      }
+    },
+    "preview_score_and_isolation": {
+      "passed": true,
+      "scores": {
+        "8H QI": 22,
+        "8H qI": 2,
+        "pass": 0
+      }
+    },
+    "restricted_bounded_analysis": {
+      "passed": true,
+      "result": {
+        "rows": [
+          {
+            "move": "pass",
+            "score": 0,
+            "ignored": "-",
+            "win_pct": 53.9,
+            "win_pct_sem": 2.4641,
+            "equity": 18.33,
+            "equity_sem": 3.1056,
+            "static_equity": -1000.0,
+            "samples": 6,
+            "ply_statistics": [
+              1.67,
+              2.66,
+              0.0,
+              20.0,
+              5.4,
+              0.0
+            ]
+          },
+          {
+            "move": "8H QI",
+            "score": 22,
+            "ignored": "-",
+            "win_pct": 52.08,
+            "win_pct_sem": 2.0963,
+            "equity": 24.4,
+            "equity_sem": 4.5891,
+            "static_equity": 21.3,
+            "samples": 5,
+            "ply_statistics": [
+              7.8,
+              6.46,
+              0.0,
+              10.2,
+              3.83,
+              0.0
+            ]
+          },
+          {
+            "move": "8H qI",
+            "score": 2,
+            "ignored": "-",
+            "win_pct": 41.78,
+            "win_pct_sem": 0.0,
+            "equity": -5.0,
+            "equity_sem": 0.0,
+            "static_equity": 1.3,
+            "samples": 1,
+            "ply_statistics": [
+              7.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "iterations": 12,
+        "status": "Finished (max iterations reached)",
+        "known_opponent_rack": ""
+      },
+      "work_definition": "one candidate rollout sample; total across candidates"
+    },
+    "minimum_sample_floor": {
+      "passed": true,
+      "requested_iterations": 12,
+      "minimum_per_candidate": 500,
+      "actual_iterations": 1500
+    },
+    "phonies_require_host_gate": {
+      "passed": true,
+      "native_exit_code": 0,
+      "committed_despite_phony": true
+    },
+    "bingo_score": {
+      "passed": true
+    },
+    "exchange_notation": {
+      "passed": true
+    },
+    "error_clear_and_reuse": {
+      "passed": true,
+      "exit_code": 1
+    },
+    "unknown_rack_and_seed_repeatability": {
+      "passed": true,
+      "observation_id": "obs_v1_2fec391846f0b9e1f9a94c787fa2ad0db40c2c0b5fcf78c450d512c558e9bea9",
+      "identical_native_requests": true,
+      "identical_quantitative_results": true,
+      "private_fields_changed": [
+        "opponent rack",
+        "bag composition",
+        "bag order",
+        "RNG state"
+      ],
+      "transcript": [
+        "set -lex NWL_HARNESS_SMOKE -leaves NWL_HARNESS_SMOKE -wmp false -savesettings false -shwithmoves false -threads 1 -numplays 10 -maxnumdplays 100 -seed 42",
+        "cgp 15/15/15/15/15/15/15/15/15/15/15/15/15/15/15 ?AEIQRT/ 0/0 0",
+        "addmoves 8H QI,8H qI,pass",
+        "simulate - -it 12 -minp 1 -plies 2 -scond none -threads 1 -seed 42"
+      ],
+      "seed": 42,
+      "threads": 1
+    },
+    "known_rack_default_is_unsafe_for_public_analysis": {
+      "passed": true,
+      "stored_rack_used": "BCDFGHJ"
+    },
+    "commit_is_not_a_complete_arbiter_transition": {
+      "passed": true,
+      "score_after": 22,
+      "both_native_racks_empty_after_commit": true,
+      "implication": "History-oriented commit does not retain/refill the CGP racks; host must own game transitions"
+    },
+    "cancellation_and_handle_reuse": {
+      "passed": true,
+      "cancel_to_join_seconds": 0.0001437499886378646,
+      "result": {
+        "rows": [
+          {
+            "move": "pass",
+            "score": 0,
+            "ignored": "-",
+            "win_pct": 53.96,
+            "win_pct_sem": 0.444,
+            "equity": 18.95,
+            "equity_sem": 0.5145,
+            "static_equity": -1000.0,
+            "samples": 110,
+            "ply_statistics": [
+              1.91,
+              2.46,
+              0.0,
+              20.85,
+              3.66,
+              0.0
+            ]
+          },
+          {
+            "move": "8H QI",
+            "score": 22,
+            "ignored": "-",
+            "win_pct": 51.9,
+            "win_pct_sem": 0.3732,
+            "equity": 24.22,
+            "equity_sem": 0.8644,
+            "static_equity": 21.3,
+            "samples": 120,
+            "ply_statistics": [
+              8.23,
+              5.9,
+              0.0,
+              10.45,
+              3.77,
+              0.0
+            ]
+          },
+          {
+            "move": "8H qI",
+            "score": 2,
+            "ignored": "-",
+            "win_pct": 41.78,
+            "win_pct_sem": 0.0,
+            "equity": -5.0,
+            "equity_sem": 0.0,
+            "static_equity": 1.3,
+            "samples": 1,
+            "ply_statistics": [
+              7.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "iterations": 231,
+        "status": "Finished (user interrupt)",
+        "known_opponent_rack": ""
+      }
+    },
+    "creation_failure": {
+      "passed": true
+    }
+  },
+  "raw_output": {
+    "generated": "1:   8G QI   AERT? 22 22.00 \n2:   8H QI   AERT? 22 21.30 \n3:   8G Qi   AEIRT 20 20.00 \n4:   8H Qi   AEIRT 20 19.30 \n5:   8E RATE IQ?   8  8.00  \n6:   8E TARE IQ?   8  8.00  \n7:   8G RATE IQ?   8  8.00  \n8:   8G TARE IQ?   8  8.00  \n9:   8E TEAR IQ?   8  7.30  \n10:  8F TEAR IQ?   8  7.30  \n\nShowing 10 of 10 plays\n",
+    "restricted_static": "1:  8H QI AERT?   22 21.30    \n2:  8H qI AEQRT   2  1.30     \n3:  pass  AEIQRT? 0  -1000.00 \n\nShowing 3 of 3 plays\n",
+    "bounded_simulation": "1: pass  AEIQRT? 0  - 53.90 2.4641 18.33 3.1056 -1000.00 6 1.67 2.66 0.00 20.00 5.40 0.00 \n2: 8H QI AERT?   22 - 52.08 2.0963 24.40 4.5891 21.30    5 7.80 6.46 0.00 10.20 3.83 0.00 \n3: 8H qI AEQRT   2  - 41.78 0.0000 -5.00 0.0000 1.30     1 7.00 0.00 0.00 0.00  0.00 0.00 \n\nShowing 3 of 3 plays\nShowing 2 of 2 plies\n\nIters:     12                                 \nTime:      0.00 seconds                       \nOpp Rack:                                     \nInfer:     0                                  \nWp Cutoff: 0.005                              \nStatus:    Finished (max iterations reached)\n \nNps:       75472                              \n",
+    "default_sample_floor": "1: pass   0  - 54.08 0.2023 19.16 0.2337 -1000.00 500 1.90 2.46 0.00 21.06 3.55  0.00 \n2: 8H QI  22 - 51.98 0.1843 24.26 0.4255 21.30    500 8.26 5.99 0.00 10.53 3.73  0.00 \n3: 8H qI  2  - 49.80 0.2864 17.39 0.6454 1.30     500 3.85 2.66 0.00 19.24 13.78 0.00 \n\nShowing 3 of 3 plays\nShowing 2 of 2 plies\n\nIters:     1500                               \nTime:      0.03 seconds                       \nOpp Rack:                                     \nInfer:     0                                  \nWp Cutoff: 0.005                              \nStatus:    Finished (max iterations reached)\n \nNps:       134036                             \n",
+    "phony_preview": "Invalid words formed by 8H QA: QA\n",
+    "phony_commit": "Invalid words formed by 8H QA: QA\n",
+    "board_after_phony_commit": "\n   \uff21\uff22\uff23\uff24\uff25\uff26\uff27\uff28\uff29\uff2a\uff2b\uff2c\uff2d\uff2e\uff2f    Player 1           22\n  \u250f\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2513 \u27a4 Player 2           0\n 1\u2503\uff1d\u3000\u3000\uff07\u3000\u3000\u3000\uff1d\u3000\u3000\u3000\uff07\u3000\u3000\uff1d\u2503   \n 2\u2503\u3000\uff0d\u3000\u3000\u3000\uff02\u3000\u3000\u3000\uff02\u3000\u3000\u3000\uff0d\u3000\u2503   Unseen: 98 (41v | 55c)\n 3\u2503\u3000\u3000\uff0d\u3000\u3000\u3000\uff07\u3000\uff07\u3000\u3000\u3000\uff0d\u3000\u3000\u2503   ? ? A A A A A A A A \n 4\u2503\uff07\u3000\u3000\uff0d\u3000\u3000\u3000\uff07\u3000\u3000\u3000\uff0d\u3000\u3000\uff07\u2503   B B C C D D D D E E \n 5\u2503\u3000\u3000\u3000\u3000\uff0d\u3000\u3000\u3000\u3000\u3000\uff0d\u3000\u3000\u3000\u3000\u2503   E E E E E E E E E E \n 6\u2503\u3000\uff02\u3000\u3000\u3000\uff02\u3000\u3000\u3000\uff02\u3000\u3000\u3000\uff02\u3000\u2503   F F G G G H H I I I \n 7\u2503\u3000\u3000\uff07\u3000\u3000\u3000\uff07\u3000\uff07\u3000\u3000\u3000\uff07\u3000\u3000\u2503   I I I I I I J K L L \n 8\u2503\uff1d\u3000\u3000\uff07\u3000\u3000\u3000QA\u3000\u3000\uff07\u3000\u3000\uff1d\u2503   L L M M N N N N N N \n 9\u2503\u3000\u3000\uff07\u3000\u3000\u3000\uff07\u3000\uff07\u3000\u3000\u3000\uff07\u3000\u3000\u2503   O O O O O O O O P P \n10\u2503\u3000\uff02\u3000\u3000\u3000\uff02\u3000\u3000\u3000\uff02\u3000\u3000\u3000\uff02\u3000\u2503   R R R R R R S S S S \n11\u2503\u3000\u3000\u3000\u3000\uff0d\u3000\u3000\u3000\u3000\u3000\uff0d\u3000\u3000\u3000\u3000\u2503   T T T T T T U U U U \n12\u2503\uff07\u3000\u3000\uff0d\u3000\u3000\u3000\uff07\u3000\u3000\u3000\uff0d\u3000\u3000\uff07\u2503   V V W W X Y Y Z \n13\u2503\u3000\u3000\uff0d\u3000\u3000\u3000\uff07\u3000\uff07\u3000\u3000\u3000\uff0d\u3000\u3000\u2503   Event 1 (Player 1):\n14\u2503\u3000\uff0d\u3000\u3000\u3000\uff02\u3000\u3000\u3000\uff02\u3000\u3000\u3000\uff0d\u3000\u2503   8H QA 22 AEIQRT?\n15\u2503\uff1d\u3000\u3000\uff07\u3000\u3000\u3000\uff1d\u3000\u3000\u3000\uff07\u3000\u3000\uff1d\u2503   \n  \u2517\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u251b \n\n",
+    "bingo_preview": "1:  8E RETINAS  64 64.00 \n\nShowing 1 of 1 plays\n",
+    "exchange_preview": "1:  (exch AE?) IQRT? 0 0.00 \n\nShowing 1 of 1 plays\n",
+    "hidden_variant_simulations": [
+      "1: pass   0  - 53.90 2.4641 18.33 3.1056 -1000.00 6 1.67 2.66 0.00 20.00 5.40 0.00 \n2: 8H QI  22 - 52.08 2.0963 24.40 4.5891 21.30    5 7.80 6.46 0.00 10.20 3.83 0.00 \n3: 8H qI  2  - 41.78 0.0000 -5.00 0.0000 1.30     1 7.00 0.00 0.00 0.00  0.00 0.00 \n\nShowing 3 of 3 plays\nShowing 2 of 2 plies\n\nIters:     12                                 \nTime:      0.00 seconds                       \nOpp Rack:                                     \nInfer:     0                                  \nWp Cutoff: 0.005                              \nStatus:    Finished (max iterations reached)\n \nNps:       94987                              \n",
+      "1: pass   0  - 53.90 2.4641 18.33 3.1056 -1000.00 6 1.67 2.66 0.00 20.00 5.40 0.00 \n2: 8H QI  22 - 52.08 2.0963 24.40 4.5891 21.30    5 7.80 6.46 0.00 10.20 3.83 0.00 \n3: 8H qI  2  - 41.78 0.0000 -5.00 0.0000 1.30     1 7.00 0.00 0.00 0.00  0.00 0.00 \n\nShowing 3 of 3 plays\nShowing 2 of 2 plies\n\nIters:     12                                 \nTime:      0.00 seconds                       \nOpp Rack:                                     \nInfer:     0                                  \nWp Cutoff: 0.005                              \nStatus:    Finished (max iterations reached)\n \nNps:       98901                              \n",
+      "1: pass   0  - 53.90 2.4641 18.33 3.1056 -1000.00 6 1.67 2.66 0.00 20.00 5.40 0.00 \n2: 8H QI  22 - 52.08 2.0963 24.40 4.5891 21.30    5 7.80 6.46 0.00 10.20 3.83 0.00 \n3: 8H qI  2  - 41.78 0.0000 -5.00 0.0000 1.30     1 7.00 0.00 0.00 0.00  0.00 0.00 \n\nShowing 3 of 3 plays\nShowing 2 of 2 plies\n\nIters:     12                                 \nTime:      0.00 seconds                       \nOpp Rack:                                     \nInfer:     0                                  \nWp Cutoff: 0.005                              \nStatus:    Finished (max iterations reached)\n \nNps:       100559                             \n"
+    ],
+    "known_rack_simulation": "1: 8H QI  22 - 58.71 0.0000 37.00 0.0000 21.30    5 0.00 0.00 0.00 15.00 0.00 0.00 \n2: pass   0  - 57.34 0.0000 22.00 0.0000 -1000.00 5 0.00 0.00 0.00 22.00 0.00 0.00 \n3: 8H qI  2  - 56.06 0.0000 23.00 0.0000 1.30     2 0.00 0.00 0.00 21.00 0.00 0.00 \n\nShowing 3 of 3 plays\nShowing 2 of 2 plies\n\nIters:     12                                 \nTime:      0.00 seconds                       \nOpp Rack:  BCDFGHJ                            \nInfer:     0                                  \nWp Cutoff: 0.005                              \nStatus:    Finished (max iterations reached)\n \nNps:       105572                             \n",
+    "private_position_before_commit": "\n   \uff21\uff22\uff23\uff24\uff25\uff26\uff27\uff28\uff29\uff2a\uff2b\uff2c\uff2d\uff2e\uff2f  \u27a4 Player 1  AEIQRT?  0\n  \u250f\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2513   Player 2  BCDFGHJ  0\n 1\u2503\uff1d\u3000\u3000\uff07\u3000\u3000\u3000\uff1d\u3000\u3000\u3000\uff07\u3000\u3000\uff1d\u2503   \n 2\u2503\u3000\uff0d\u3000\u3000\u3000\uff02\u3000\u3000\u3000\uff02\u3000\u3000\u3000\uff0d\u3000\u2503   Unseen: 86 (39v | 46c)\n 3\u2503\u3000\u3000\uff0d\u3000\u3000\u3000\uff07\u3000\uff07\u3000\u3000\u3000\uff0d\u3000\u3000\u2503   ? A A A A A A A A B \n 4\u2503\uff07\u3000\u3000\uff0d\u3000\u3000\u3000\uff07\u3000\u3000\u3000\uff0d\u3000\u3000\uff07\u2503   C D D D E E E E E E \n 5\u2503\u3000\u3000\u3000\u3000\uff0d\u3000\u3000\u3000\u3000\u3000\uff0d\u3000\u3000\u3000\u3000\u2503   E E E E E F G G H I \n 6\u2503\u3000\uff02\u3000\u3000\u3000\uff02\u3000\u3000\u3000\uff02\u3000\u3000\u3000\uff02\u3000\u2503   I I I I I I I K L L \n 7\u2503\u3000\u3000\uff07\u3000\u3000\u3000\uff07\u3000\uff07\u3000\u3000\u3000\uff07\u3000\u3000\u2503   L L M M N N N N N N \n 8\u2503\uff1d\u3000\u3000\uff07\u3000\u3000\u3000\uff0d\u3000\u3000\u3000\uff07\u3000\u3000\uff1d\u2503   O O O O O O O O P P \n 9\u2503\u3000\u3000\uff07\u3000\u3000\u3000\uff07\u3000\uff07\u3000\u3000\u3000\uff07\u3000\u3000\u2503   R R R R R S S S S T \n10\u2503\u3000\uff02\u3000\u3000\u3000\uff02\u3000\u3000\u3000\uff02\u3000\u3000\u3000\uff02\u3000\u2503   T T T T U U U U V V \n11\u2503\u3000\u3000\u3000\u3000\uff0d\u3000\u3000\u3000\u3000\u3000\uff0d\u3000\u3000\u3000\u3000\u2503   W W X Y Y Z \n12\u2503\uff07\u3000\u3000\uff0d\u3000\u3000\u3000\uff07\u3000\u3000\u3000\uff0d\u3000\u3000\uff07\u2503   \n13\u2503\u3000\u3000\uff0d\u3000\u3000\u3000\uff07\u3000\uff07\u3000\u3000\u3000\uff0d\u3000\u3000\u2503   \n14\u2503\u3000\uff0d\u3000\u3000\u3000\uff02\u3000\u3000\u3000\uff02\u3000\u3000\u3000\uff0d\u3000\u2503   \n15\u2503\uff1d\u3000\u3000\uff07\u3000\u3000\u3000\uff1d\u3000\u3000\u3000\uff07\u3000\u3000\uff1d\u2503   \n  \u2517\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u251b \n\n",
+    "private_position_after_commit": "\n   \uff21\uff22\uff23\uff24\uff25\uff26\uff27\uff28\uff29\uff2a\uff2b\uff2c\uff2d\uff2e\uff2f    Player 1           22\n  \u250f\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2513 \u27a4 Player 2           0\n 1\u2503\uff1d\u3000\u3000\uff07\u3000\u3000\u3000\uff1d\u3000\u3000\u3000\uff07\u3000\u3000\uff1d\u2503   \n 2\u2503\u3000\uff0d\u3000\u3000\u3000\uff02\u3000\u3000\u3000\uff02\u3000\u3000\u3000\uff0d\u3000\u2503   Unseen: 98 (41v | 55c)\n 3\u2503\u3000\u3000\uff0d\u3000\u3000\u3000\uff07\u3000\uff07\u3000\u3000\u3000\uff0d\u3000\u3000\u2503   ? ? A A A A A A A A \n 4\u2503\uff07\u3000\u3000\uff0d\u3000\u3000\u3000\uff07\u3000\u3000\u3000\uff0d\u3000\u3000\uff07\u2503   A B B C C D D D D E \n 5\u2503\u3000\u3000\u3000\u3000\uff0d\u3000\u3000\u3000\u3000\u3000\uff0d\u3000\u3000\u3000\u3000\u2503   E E E E E E E E E E \n 6\u2503\u3000\uff02\u3000\u3000\u3000\uff02\u3000\u3000\u3000\uff02\u3000\u3000\u3000\uff02\u3000\u2503   E F F G G G H H I I \n 7\u2503\u3000\u3000\uff07\u3000\u3000\u3000\uff07\u3000\uff07\u3000\u3000\u3000\uff07\u3000\u3000\u2503   I I I I I I J K L L \n 8\u2503\uff1d\u3000\u3000\uff07\u3000\u3000\u3000QI\u3000\u3000\uff07\u3000\u3000\uff1d\u2503   L L M M N N N N N N \n 9\u2503\u3000\u3000\uff07\u3000\u3000\u3000\uff07\u3000\uff07\u3000\u3000\u3000\uff07\u3000\u3000\u2503   O O O O O O O O P P \n10\u2503\u3000\uff02\u3000\u3000\u3000\uff02\u3000\u3000\u3000\uff02\u3000\u3000\u3000\uff02\u3000\u2503   R R R R R R S S S S \n11\u2503\u3000\u3000\u3000\u3000\uff0d\u3000\u3000\u3000\u3000\u3000\uff0d\u3000\u3000\u3000\u3000\u2503   T T T T T T U U U U \n12\u2503\uff07\u3000\u3000\uff0d\u3000\u3000\u3000\uff07\u3000\u3000\u3000\uff0d\u3000\u3000\uff07\u2503   V V W W X Y Y Z \n13\u2503\u3000\u3000\uff0d\u3000\u3000\u3000\uff07\u3000\uff07\u3000\u3000\u3000\uff0d\u3000\u3000\u2503   Event 1 (Player 1):\n14\u2503\u3000\uff0d\u3000\u3000\u3000\uff02\u3000\u3000\u3000\uff02\u3000\u3000\u3000\uff0d\u3000\u2503   8H QI 22 AEIQRT?\n15\u2503\uff1d\u3000\u3000\uff07\u3000\u3000\u3000\uff1d\u3000\u3000\u3000\uff07\u3000\u3000\uff1d\u2503   \n  \u2517\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u251b \n\n",
+    "cancelled_simulation": "1: pass   0  - 53.96 0.4440 18.95 0.5145 -1000.00 110 1.91 2.46 0.00 20.85 3.66 0.00 \n2: 8H QI  22 - 51.90 0.3732 24.22 0.8644 21.30    120 8.23 5.90 0.00 10.45 3.77 0.00 \n3: 8H qI  2  - 41.78 0.0000 -5.00 0.0000 1.30     1   7.00 0.00 0.00 0.00  0.00 0.00 \n\nShowing 3 of 3 plays\nShowing 2 of 2 plies\n\nIters:     231                        \nTime:      0.01 seconds               \nOpp Rack:                             \nInfer:     0                          \nWp Cutoff: 0.005                      \nStatus:    Finished (user interrupt)\n \nNps:       125977                     \n"
+  },
+  "unsupported_or_unverified": {
+    "draw_preserving_native_checkpoint": "C API has no bag-order/RNG capture or restore functions; CGP/GCG are not full private checkpoints",
+    "standalone_native_arbiter": "commit replays game history and clears unspecified subsequent racks; it is not a complete draw-preserving game transition",
+    "production_lexicon_and_leaves": "Toy lexicon, zero KLV; no strength conclusions",
+    "endgame_and_partial_unknown_racks": "Not verified by this smoke probe; public codec rejects these",
+    "analysis_and_arbiter_protocol_implementations": "Step 5; this probe uses internal command binding only"
+  }
+}
