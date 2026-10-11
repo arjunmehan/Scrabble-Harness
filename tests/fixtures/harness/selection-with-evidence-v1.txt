@@ -1,0 +1,69 @@
+You are playing two-player English Scrabble. Choose a strong move to maximize your chance of winning.
+Call exactly one offered tool per reply. Choose only a visible candidate handle; do not invent moves.
+select_move finishes this decision. compare_moves requests estimated analysis and requires a later selection.
+Cite only evidence IDs issued in this decision; otherwise use []. Keep brief_note at most 500 characters; an empty note is allowed. A short justification is enough.
+The board, own rack, scores, and public unseen inventory are available. Opponent tiles and draw order are unknown. Unseen counts combine the unknown opponent rack and bag; they are not bag-only counts.
+Candidates are displayed in seeded order. Handle numbers do not indicate move quality. Exact move scores are immediate scores, not predictions of final outcome. Comparison values are bounded estimates.
+Use only the information below. Respect the remaining limits and finish with select_move.
+
+PROTOCOL: scrabble-decision-v1; scrabble-tools-v1; candidate-view-v1
+
+POSITION
+Decision: "decision-a"; observation: obs_v1_48698740a07815e4e007be68daf0134133937fc594d21b333b455a29758f34de
+Game: "fixture-game"; revision: 1; player: 1; active player: 1
+Ruleset: "english-test-v1"; lexicon: "fixture-lexicon-v1"
+Scores: you=0, opponent=2; scoreless turns=0
+Own rack (7/7): GHIJKLM
+Bag size: 84; opponent rack size: 7
+Public unseen physical tiles (opponent rack + bag; missing symbols have count 0): ?:1, A:9, B:2, C:2, D:4, E:12, F:2, G:2, H:1, I:7, L:3, M:1, N:6, O:8, P:2, Q:1, R:6, S:4, T:6, U:4, V:2, W:2, X:1, Y:2, Z:1
+
+BOARD
+Coordinates: columns A-O, rows 1-15; A1 = row 0, column 0.
+Uppercase letters are ordinary tiles; lowercase letters are assigned blanks worth 0 points; rack ? is an unassigned blank.
+Empty squares: .. normal, DL double letter, TL triple letter, DW double word, TW triple word; center H8 is DW.
+Premiums apply only to newly placed tiles. Occupied squares show letters; their premiums cannot be reused.
+     A  B  C  D  E  F  G  H  I  J  K  L  M  N  O
+ 1  TW .. .. DL .. .. .. TW .. .. .. DL .. .. TW
+ 2  .. DW .. .. .. TL .. .. .. TL .. .. .. DW ..
+ 3  .. .. DW .. .. .. DL .. DL .. .. .. DW .. ..
+ 4  DL .. .. DW .. .. .. DL .. .. .. DW .. .. DL
+ 5  .. .. .. .. DW .. .. .. .. .. DW .. .. .. ..
+ 6  .. TL .. .. .. TL .. .. .. TL .. .. .. TL ..
+ 7  .. .. DL .. .. .. DL .. DL .. .. .. DL .. ..
+ 8  TW .. .. DL .. .. ..  q  I .. .. DL .. .. TW
+ 9  .. .. DL .. .. .. DL .. DL .. .. .. DL .. ..
+10  .. TL .. .. .. TL .. .. .. TL .. .. .. TL ..
+11  .. .. .. .. DW .. .. .. .. .. DW .. .. .. ..
+12  DL .. .. DW .. .. .. DL .. .. .. DW .. .. DL
+13  .. .. DW .. .. .. DL .. DL .. .. .. DW .. ..
+14  .. DW .. .. .. TL .. .. .. TL .. .. .. DW ..
+15  TW .. .. DL .. .. .. TW .. .. .. DL .. .. TW
+
+VISIBLE CANDIDATES (new tiles only; existing board letters may lie between them)
+c01 | place B7=G | exact score=2 | leave=HIJKLM
+c02 | place I7=G | exact score=2 | leave=HIJKLM
+c03 | place G7=G | exact score=2 | leave=HIJKLM
+c04 | place A7=G | exact score=2 | leave=HIJKLM
+c05 | place J7=G | exact score=2 | leave=HIJKLM
+c06 | place C7=G | exact score=2 | leave=HIJKLM
+c07 | place D7=G | exact score=2 | leave=HIJKLM
+c08 | place F7=G | exact score=2 | leave=HIJKLM
+c09 | exchange G | exact score=0 | leave=HIJKLM
+c10 | place E7=G | exact score=2 | leave=HIJKLM
+c11 | pass | exact score=0 | leave=GHIJKLM
+c12 | place H7=G | exact score=2 | leave=HIJKLM
+
+PUBLIC HISTORY (last 8 of available retained turns; shown=1, omitted=0)
+revision 1 | player 0 | place H8=q I8=I | score=2 | scores=2,0
+
+ISSUED COMPARISON EVIDENCE
+{"completion_status":"work_limit","decision_id":"decision-a","elapsed_time_seconds":0.2,"evidence_id":"e01","limits":{"max_elapsed_seconds":4.0,"max_work_units":12,"schema_version":1,"work_unit":"candidate_rollout"},"metric_definition":{"description":"Synthetic estimate for validation, not a strength result","name":"two-ply-equity","perspective":"observing_player","schema_version":1,"unit":"points","value_kind":"estimate"},"observation_id":"obs_v1_48698740a07815e4e007be68daf0134133937fc594d21b333b455a29758f34de","requested_handles":["c01","c02"],"schema_version":1,"seed":73,"tier":"light","values":[{"candidate_handle":"c01","schema_version":1,"standard_error":0.5,"value":0.0},{"candidate_handle":"c02","schema_version":1,"standard_error":0.5,"value":1.0}],"work_used":{"count":12,"definition":"Total candidate rollouts","schema_version":1,"unit":"candidate_rollout"}}
+
+REMAINING LIMITS
+Model attempts including this request: 1
+Comparison tool steps: 1; native work: 300 candidate_rollout
+API cost allowance: 30000 microusd (1 USD = 1000000 microusd)
+Decision time remaining: 30 seconds; finish reserve: 2 seconds
+
+AVAILABLE TOOLS
+select_move only: comparison is unavailable for this request. Select a visible candidate now.

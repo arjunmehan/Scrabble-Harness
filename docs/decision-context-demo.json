@@ -1,0 +1,814 @@
+{
+  "schema_version": 1,
+  "purpose": "Candidate-context demonstration; no LLM calls or game commits",
+  "lexicon_id": "NWL23",
+  "candidate_order_seed": 123,
+  "generated_candidate_count": 40,
+  "fallback_verified": true,
+  "model_view": {
+    "schema_version": 1,
+    "decision_id": "context-demo-decision-1",
+    "observation": {
+      "schema_version": 1,
+      "game_id": "context-demo-42",
+      "revision": 0,
+      "player": 0,
+      "active_player": 0,
+      "board": {
+        "schema_version": 1,
+        "tiles": []
+      },
+      "own_rack": [
+        "?",
+        "A",
+        "I",
+        "I",
+        "L",
+        "O",
+        "U"
+      ],
+      "scores": [
+        0,
+        0
+      ],
+      "opponent_rack_size": 7,
+      "bag_size": 86,
+      "scoreless_turns": 0,
+      "ruleset_id": "english-six-scoreless-v1",
+      "lexicon_id": "NWL23",
+      "tile_distribution": {
+        "schema_version": 1,
+        "counts": [
+          {
+            "schema_version": 1,
+            "tile": "?",
+            "count": 2
+          },
+          {
+            "schema_version": 1,
+            "tile": "A",
+            "count": 9
+          },
+          {
+            "schema_version": 1,
+            "tile": "B",
+            "count": 2
+          },
+          {
+            "schema_version": 1,
+            "tile": "C",
+            "count": 2
+          },
+          {
+            "schema_version": 1,
+            "tile": "D",
+            "count": 4
+          },
+          {
+            "schema_version": 1,
+            "tile": "E",
+            "count": 12
+          },
+          {
+            "schema_version": 1,
+            "tile": "F",
+            "count": 2
+          },
+          {
+            "schema_version": 1,
+            "tile": "G",
+            "count": 3
+          },
+          {
+            "schema_version": 1,
+            "tile": "H",
+            "count": 2
+          },
+          {
+            "schema_version": 1,
+            "tile": "I",
+            "count": 9
+          },
+          {
+            "schema_version": 1,
+            "tile": "J",
+            "count": 1
+          },
+          {
+            "schema_version": 1,
+            "tile": "K",
+            "count": 1
+          },
+          {
+            "schema_version": 1,
+            "tile": "L",
+            "count": 4
+          },
+          {
+            "schema_version": 1,
+            "tile": "M",
+            "count": 2
+          },
+          {
+            "schema_version": 1,
+            "tile": "N",
+            "count": 6
+          },
+          {
+            "schema_version": 1,
+            "tile": "O",
+            "count": 8
+          },
+          {
+            "schema_version": 1,
+            "tile": "P",
+            "count": 2
+          },
+          {
+            "schema_version": 1,
+            "tile": "Q",
+            "count": 1
+          },
+          {
+            "schema_version": 1,
+            "tile": "R",
+            "count": 6
+          },
+          {
+            "schema_version": 1,
+            "tile": "S",
+            "count": 4
+          },
+          {
+            "schema_version": 1,
+            "tile": "T",
+            "count": 6
+          },
+          {
+            "schema_version": 1,
+            "tile": "U",
+            "count": 4
+          },
+          {
+            "schema_version": 1,
+            "tile": "V",
+            "count": 2
+          },
+          {
+            "schema_version": 1,
+            "tile": "W",
+            "count": 2
+          },
+          {
+            "schema_version": 1,
+            "tile": "X",
+            "count": 1
+          },
+          {
+            "schema_version": 1,
+            "tile": "Y",
+            "count": 2
+          },
+          {
+            "schema_version": 1,
+            "tile": "Z",
+            "count": 1
+          }
+        ]
+      },
+      "unseen_tile_counts": {
+        "schema_version": 1,
+        "counts": [
+          {
+            "schema_version": 1,
+            "tile": "?",
+            "count": 1
+          },
+          {
+            "schema_version": 1,
+            "tile": "A",
+            "count": 8
+          },
+          {
+            "schema_version": 1,
+            "tile": "B",
+            "count": 2
+          },
+          {
+            "schema_version": 1,
+            "tile": "C",
+            "count": 2
+          },
+          {
+            "schema_version": 1,
+            "tile": "D",
+            "count": 4
+          },
+          {
+            "schema_version": 1,
+            "tile": "E",
+            "count": 12
+          },
+          {
+            "schema_version": 1,
+            "tile": "F",
+            "count": 2
+          },
+          {
+            "schema_version": 1,
+            "tile": "G",
+            "count": 3
+          },
+          {
+            "schema_version": 1,
+            "tile": "H",
+            "count": 2
+          },
+          {
+            "schema_version": 1,
+            "tile": "I",
+            "count": 7
+          },
+          {
+            "schema_version": 1,
+            "tile": "J",
+            "count": 1
+          },
+          {
+            "schema_version": 1,
+            "tile": "K",
+            "count": 1
+          },
+          {
+            "schema_version": 1,
+            "tile": "L",
+            "count": 3
+          },
+          {
+            "schema_version": 1,
+            "tile": "M",
+            "count": 2
+          },
+          {
+            "schema_version": 1,
+            "tile": "N",
+            "count": 6
+          },
+          {
+            "schema_version": 1,
+            "tile": "O",
+            "count": 7
+          },
+          {
+            "schema_version": 1,
+            "tile": "P",
+            "count": 2
+          },
+          {
+            "schema_version": 1,
+            "tile": "Q",
+            "count": 1
+          },
+          {
+            "schema_version": 1,
+            "tile": "R",
+            "count": 6
+          },
+          {
+            "schema_version": 1,
+            "tile": "S",
+            "count": 4
+          },
+          {
+            "schema_version": 1,
+            "tile": "T",
+            "count": 6
+          },
+          {
+            "schema_version": 1,
+            "tile": "U",
+            "count": 3
+          },
+          {
+            "schema_version": 1,
+            "tile": "V",
+            "count": 2
+          },
+          {
+            "schema_version": 1,
+            "tile": "W",
+            "count": 2
+          },
+          {
+            "schema_version": 1,
+            "tile": "X",
+            "count": 1
+          },
+          {
+            "schema_version": 1,
+            "tile": "Y",
+            "count": 2
+          },
+          {
+            "schema_version": 1,
+            "tile": "Z",
+            "count": 1
+          }
+        ]
+      },
+      "public_history": [],
+      "status": "in_progress",
+      "terminal_reason": null,
+      "observation_id": "obs_v1_34a3cb333dc0aa12b9de259930267a251a7c8af35b9e2b19ab12577b912cb2e5"
+    },
+    "presentation_version": "candidate-view-v1",
+    "candidates": [
+      {
+        "schema_version": 1,
+        "handle": "c01",
+        "move": {
+          "schema_version": 1,
+          "kind": "pass"
+        },
+        "exact_score": 0,
+        "leave": [
+          "?",
+          "A",
+          "I",
+          "I",
+          "L",
+          "O",
+          "U"
+        ]
+      },
+      {
+        "schema_version": 1,
+        "handle": "c02",
+        "move": {
+          "schema_version": 1,
+          "kind": "place",
+          "tiles": [
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 3,
+              "displayed_letter": "A",
+              "is_blank": false
+            },
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 4,
+              "displayed_letter": "I",
+              "is_blank": false
+            },
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 5,
+              "displayed_letter": "O",
+              "is_blank": false
+            },
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 6,
+              "displayed_letter": "L",
+              "is_blank": false
+            },
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 7,
+              "displayed_letter": "I",
+              "is_blank": false
+            }
+          ]
+        },
+        "exact_score": 12,
+        "leave": [
+          "?",
+          "U"
+        ]
+      },
+      {
+        "schema_version": 1,
+        "handle": "c03",
+        "move": {
+          "schema_version": 1,
+          "kind": "place",
+          "tiles": [
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 4,
+              "displayed_letter": "A",
+              "is_blank": false
+            },
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 5,
+              "displayed_letter": "I",
+              "is_blank": false
+            },
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 6,
+              "displayed_letter": "O",
+              "is_blank": false
+            },
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 7,
+              "displayed_letter": "L",
+              "is_blank": false
+            },
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 8,
+              "displayed_letter": "I",
+              "is_blank": false
+            }
+          ]
+        },
+        "exact_score": 10,
+        "leave": [
+          "?",
+          "U"
+        ]
+      },
+      {
+        "schema_version": 1,
+        "handle": "c04",
+        "move": {
+          "schema_version": 1,
+          "kind": "place",
+          "tiles": [
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 7,
+              "displayed_letter": "A",
+              "is_blank": false
+            },
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 8,
+              "displayed_letter": "I",
+              "is_blank": false
+            },
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 9,
+              "displayed_letter": "O",
+              "is_blank": false
+            },
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 10,
+              "displayed_letter": "L",
+              "is_blank": false
+            },
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 11,
+              "displayed_letter": "I",
+              "is_blank": false
+            }
+          ]
+        },
+        "exact_score": 12,
+        "leave": [
+          "?",
+          "U"
+        ]
+      },
+      {
+        "schema_version": 1,
+        "handle": "c05",
+        "move": {
+          "schema_version": 1,
+          "kind": "place",
+          "tiles": [
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 6,
+              "displayed_letter": "A",
+              "is_blank": false
+            },
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 7,
+              "displayed_letter": "I",
+              "is_blank": false
+            },
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 8,
+              "displayed_letter": "O",
+              "is_blank": false
+            },
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 9,
+              "displayed_letter": "L",
+              "is_blank": false
+            },
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 10,
+              "displayed_letter": "I",
+              "is_blank": false
+            }
+          ]
+        },
+        "exact_score": 10,
+        "leave": [
+          "?",
+          "U"
+        ]
+      },
+      {
+        "schema_version": 1,
+        "handle": "c06",
+        "move": {
+          "schema_version": 1,
+          "kind": "exchange",
+          "tiles": [
+            "I",
+            "I",
+            "O",
+            "U"
+          ]
+        },
+        "exact_score": 0,
+        "leave": [
+          "?",
+          "A",
+          "L"
+        ]
+      },
+      {
+        "schema_version": 1,
+        "handle": "c07",
+        "move": {
+          "schema_version": 1,
+          "kind": "exchange",
+          "tiles": [
+            "A",
+            "I",
+            "O",
+            "U"
+          ]
+        },
+        "exact_score": 0,
+        "leave": [
+          "?",
+          "I",
+          "L"
+        ]
+      },
+      {
+        "schema_version": 1,
+        "handle": "c08",
+        "move": {
+          "schema_version": 1,
+          "kind": "exchange",
+          "tiles": [
+            "I",
+            "I",
+            "L",
+            "O",
+            "U"
+          ]
+        },
+        "exact_score": 0,
+        "leave": [
+          "?",
+          "A"
+        ]
+      },
+      {
+        "schema_version": 1,
+        "handle": "c09",
+        "move": {
+          "schema_version": 1,
+          "kind": "place",
+          "tiles": [
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 7,
+              "displayed_letter": "I",
+              "is_blank": false
+            },
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 8,
+              "displayed_letter": "L",
+              "is_blank": false
+            },
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 9,
+              "displayed_letter": "I",
+              "is_blank": false
+            },
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 10,
+              "displayed_letter": "A",
+              "is_blank": false
+            }
+          ]
+        },
+        "exact_score": 8,
+        "leave": [
+          "?",
+          "O",
+          "U"
+        ]
+      },
+      {
+        "schema_version": 1,
+        "handle": "c10",
+        "move": {
+          "schema_version": 1,
+          "kind": "exchange",
+          "tiles": [
+            "I",
+            "I",
+            "U"
+          ]
+        },
+        "exact_score": 0,
+        "leave": [
+          "?",
+          "A",
+          "L",
+          "O"
+        ]
+      },
+      {
+        "schema_version": 1,
+        "handle": "c11",
+        "move": {
+          "schema_version": 1,
+          "kind": "place",
+          "tiles": [
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 5,
+              "displayed_letter": "A",
+              "is_blank": false
+            },
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 6,
+              "displayed_letter": "I",
+              "is_blank": false
+            },
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 7,
+              "displayed_letter": "O",
+              "is_blank": false
+            },
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 8,
+              "displayed_letter": "L",
+              "is_blank": false
+            },
+            {
+              "schema_version": 1,
+              "row": 7,
+              "column": 9,
+              "displayed_letter": "I",
+              "is_blank": false
+            }
+          ]
+        },
+        "exact_score": 10,
+        "leave": [
+          "?",
+          "U"
+        ]
+      },
+      {
+        "schema_version": 1,
+        "handle": "c12",
+        "move": {
+          "schema_version": 1,
+          "kind": "exchange",
+          "tiles": [
+            "I",
+            "O",
+            "U"
+          ]
+        },
+        "exact_score": 0,
+        "leave": [
+          "?",
+          "A",
+          "I",
+          "L"
+        ]
+      }
+    ]
+  },
+  "prompt_version": "scrabble-decision-v1",
+  "tool_schema_version": "scrabble-tools-v1",
+  "rendered_prompt": {
+    "instructions": "You are playing two-player English Scrabble. Choose a strong move to maximize your chance of winning.\nCall exactly one offered tool per reply. Choose only a visible candidate handle; do not invent moves.\nselect_move finishes this decision. compare_moves requests estimated analysis and requires a later selection.\nCite only evidence IDs issued in this decision; otherwise use []. Keep brief_note at most 500 characters; an empty note is allowed. A short justification is enough.\nThe board, own rack, scores, and public unseen inventory are available. Opponent tiles and draw order are unknown. Unseen counts combine the unknown opponent rack and bag; they are not bag-only counts.\nCandidates are displayed in seeded order. Handle numbers do not indicate move quality. Exact move scores are immediate scores, not predictions of final outcome. Comparison values are bounded estimates.\nUse only the information below. Respect the remaining limits and finish with select_move.\n\nPROTOCOL: scrabble-decision-v1; scrabble-tools-v1; candidate-view-v1\n\nPOSITION\nDecision: \"context-demo-decision-1\"; observation: obs_v1_34a3cb333dc0aa12b9de259930267a251a7c8af35b9e2b19ab12577b912cb2e5\nGame: \"context-demo-42\"; revision: 0; player: 0; active player: 0\nRuleset: \"english-six-scoreless-v1\"; lexicon: \"NWL23\"\nScores: you=0, opponent=0; scoreless turns=0\nOwn rack (7/7): ?AIILOU\nBag size: 86; opponent rack size: 7\nPublic unseen physical tiles (opponent rack + bag; missing symbols have count 0): ?:1, A:8, B:2, C:2, D:4, E:12, F:2, G:3, H:2, I:7, J:1, K:1, L:3, M:2, N:6, O:7, P:2, Q:1, R:6, S:4, T:6, U:3, V:2, W:2, X:1, Y:2, Z:1\n\nBOARD\nCoordinates: columns A-O, rows 1-15; A1 = row 0, column 0.\nUppercase letters are ordinary tiles; lowercase letters are assigned blanks worth 0 points; rack ? is an unassigned blank.\nEmpty squares: .. normal, DL double letter, TL triple letter, DW double word, TW triple word; center H8 is DW.\nPremiums apply only to newly placed tiles. Occupied squares show letters; their premiums cannot be reused.\n     A  B  C  D  E  F  G  H  I  J  K  L  M  N  O\n 1  TW .. .. DL .. .. .. TW .. .. .. DL .. .. TW\n 2  .. DW .. .. .. TL .. .. .. TL .. .. .. DW ..\n 3  .. .. DW .. .. .. DL .. DL .. .. .. DW .. ..\n 4  DL .. .. DW .. .. .. DL .. .. .. DW .. .. DL\n 5  .. .. .. .. DW .. .. .. .. .. DW .. .. .. ..\n 6  .. TL .. .. .. TL .. .. .. TL .. .. .. TL ..\n 7  .. .. DL .. .. .. DL .. DL .. .. .. DL .. ..\n 8  TW .. .. DL .. .. .. DW .. .. .. DL .. .. TW\n 9  .. .. DL .. .. .. DL .. DL .. .. .. DL .. ..\n10  .. TL .. .. .. TL .. .. .. TL .. .. .. TL ..\n11  .. .. .. .. DW .. .. .. .. .. DW .. .. .. ..\n12  DL .. .. DW .. .. .. DL .. .. .. DW .. .. DL\n13  .. .. DW .. .. .. DL .. DL .. .. .. DW .. ..\n14  .. DW .. .. .. TL .. .. .. TL .. .. .. DW ..\n15  TW .. .. DL .. .. .. TW .. .. .. DL .. .. TW\n\nVISIBLE CANDIDATES (new tiles only; existing board letters may lie between them)\nc01 | pass | exact score=0 | leave=?AIILOU\nc02 | place D8=A E8=I F8=O G8=L H8=I | exact score=12 | leave=?U\nc03 | place E8=A F8=I G8=O H8=L I8=I | exact score=10 | leave=?U\nc04 | place H8=A I8=I J8=O K8=L L8=I | exact score=12 | leave=?U\nc05 | place G8=A H8=I I8=O J8=L K8=I | exact score=10 | leave=?U\nc06 | exchange IIOU | exact score=0 | leave=?AL\nc07 | exchange AIOU | exact score=0 | leave=?IL\nc08 | exchange IILOU | exact score=0 | leave=?A\nc09 | place H8=I I8=L J8=I K8=A | exact score=8 | leave=?OU\nc10 | exchange IIU | exact score=0 | leave=?ALO\nc11 | place F8=A G8=I H8=O I8=L J8=I | exact score=10 | leave=?U\nc12 | exchange IOU | exact score=0 | leave=?AIL\n\nPUBLIC HISTORY (last 8 of available retained turns; shown=0, omitted=0)\n(none shown)\n\nISSUED COMPARISON EVIDENCE\n(none)\n\nREMAINING LIMITS\nModel attempts including this request: 2\nComparison tool steps: 1; native work: 300 candidate_rollout\nAPI cost allowance: 30000 microusd (1 USD = 1000000 microusd)\nDecision time remaining: 30 seconds; finish reserve: 2 seconds\n\nAVAILABLE TOOLS\ncompare_moves: 2-4 distinct visible handles; one offered tier; then select on a later request.\nTier light: up to 60 total candidate_rollout; up to 8 seconds.\nTier standard: up to 300 total candidate_rollout; up to 8 seconds.\nselect_move: choose one visible handle now; comparison is optional.\n",
+    "tools": [
+      {
+        "type": "function",
+        "name": "select_move",
+        "description": "Select one candidate handle visible in this decision and finish the decision. Cite only issued evidence IDs. Use an empty evidence_ids array when none is cited and an empty brief_note when no note is needed. This tool does not commit a game turn.",
+        "strict": true,
+        "parameters": {
+          "additionalProperties": false,
+          "properties": {
+            "brief_note": {
+              "maxLength": 500,
+              "type": "string"
+            },
+            "candidate_handle": {
+              "pattern": "^c[0-9]{2,5}$",
+              "type": "string"
+            },
+            "evidence_ids": {
+              "items": {
+                "pattern": "^e[0-9]{2,5}$",
+                "type": "string"
+              },
+              "maxItems": 1000,
+              "type": "array"
+            }
+          },
+          "required": [
+            "candidate_handle",
+            "evidence_ids",
+            "brief_note"
+          ],
+          "type": "object"
+        }
+      },
+      {
+        "type": "function",
+        "name": "compare_moves",
+        "description": "Request a bounded comparison of two to four distinct candidate handles visible in this decision. Choose a currently available tier. The host checks handles, tier, phase, and remaining resources before execution. The result is an estimate and does not finish the decision.",
+        "strict": true,
+        "parameters": {
+          "additionalProperties": false,
+          "properties": {
+            "candidate_handles": {
+              "items": {
+                "pattern": "^c[0-9]{2,5}$",
+                "type": "string"
+              },
+              "maxItems": 4,
+              "minItems": 2,
+              "type": "array"
+            },
+            "tier": {
+              "enum": [
+                "light",
+                "standard"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "candidate_handles",
+            "tier"
+          ],
+          "type": "object"
+        }
+      }
+    ],
+    "tool_choice": "required",
+    "parallel_tool_calls": false
+  }
+}

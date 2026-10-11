@@ -28,6 +28,25 @@ identities, and distribution terms.
 The next phase is specified in the [agent harness implementation plan](docs/harness-implementation-plan.md):
 architecture, typed tools, provider integration, resource accounting, recovery,
 paired evaluation, technology choices, and implementation gates.
+The [chronological task checklist](docs/harness-task-checklist.md) breaks that
+plan into 24 required tasks plus optional extensions.
+
+Harness Tasks 1–10 are implemented: provider-neutral contracts and a frozen
+decision context with one generated pool, 12 shuffled visible handles, a
+verified static fallback, and scoped evidence. The
+[harness foundation guide](docs/harness-foundation.md) explains the APIs and
+includes a runnable NWL23 preparation demo. The [prompt guide](docs/harness-prompts.md)
+adds deterministic board/premium/blank rendering, strict tool schemas, public
+history and evidence, request/result bounds, and final-attempt selection.
+The [run-store guide](docs/harness-run-store.md) adds private SQLite records,
+durable audit events, transactions, and revision uniqueness. The
+[budget ledger guide](docs/harness-budget-ledger.md) adds atomic shared admission,
+conservative cost/work accounting, protected final-selection capacity, and
+persistent deadlines. The [scripted provider guide](docs/harness-scripted-provider.md)
+adds reproducible offline replies, failures, delays, and cancellation. Real model
+calls remain Task 11; the bounded decision loop is implemented in Task 8. The
+[tool execution guide](docs/harness-tools.md) connects saved actions to native
+comparisons, durable evidence, and canonical selection.
 
 ## Development setup
 
@@ -72,9 +91,26 @@ src/scrabble_harness/
     trace.py              # Allowlisted, correlated JSONL worker diagnostics
     checkpoints.py        # Immutable private revision snapshots and recovery
     errors.py             # Shared engine failure categories
+  harness/
+    contracts.py          # Strict actions, public views, limits, evidence, manifest
+    context.py            # Frozen pool, seeded handles, verified static fallback
+    prompts.py            # Deterministic public prompts and bounded model requests
+    tool_schemas.py       # Packaged strict function definitions and argument parsing
+    schemas/              # Versioned JSON function-schema assets
+    errors.py             # Preparation, scope, handle, and evidence failures
+  providers/
+    protocol.py           # Provider-neutral requests/replies/capabilities/usage
+  runs/
+    records.py            # Campaign/run/decision/attempt/reservation/commit records
+    events.py             # Typed private audit snapshots
+    store.py              # Durable SQLite transactions and local writer locking
+    migrations/           # Packaged versioned SQL and checksum history
+    errors.py             # Conflict, corruption, busy, and location errors
 tests/
   domain/
   engine/
+  harness/
+  runs/
   fixtures/
 ```
 
@@ -90,7 +126,9 @@ Both interfaces are asynchronous because native work executes in a worker
 process. `MagpieAnalysisEngine` and `MagpieArbiterEngine` implement them with
 concrete domain models; construct them with `MagpieSettings.from_manifest(...)`.
 
-The dependency direction is `engine -> domain`. Domain records must remain
+The dependency directions are `engine -> domain`, `harness -> domain`, and
+`providers -> harness contracts + domain`. The harness context uses the engine
+protocol without importing native runtime code. Domain records must remain
 independent of MAGPIE commands, native-library types, provider SDKs, and UI code.
 
 The native boundary has two layers: `magpie_ffi.py` manages C calls and
@@ -230,7 +268,7 @@ other selection failures raise `DecisionValidationError`; malformed records
 raise Pydantic `ValidationError`.
 
 This check is pure: it does not change the state, verify engine legality, validate
-evidence, or perform an atomic commit. The future arbiter must recheck the
+evidence, or perform an atomic commit. The arbiter rechecks the
 expected revision and legality within its serialized commit operation before
 applying `selected.move`.
 
@@ -328,10 +366,100 @@ preserve later seeded results. The [limits and recovery guide](docs/engine-recov
 explains optional `TraceJournal`, durable `CheckpointStore`, the arbiter's
 `resume(game_id)` method, failure handling, and current boundaries.
 
-The suite now passes 250 tests, including 25 native integration tests. The saved
+The original engine foundation passed 250 tests, including 25 native integration tests. The saved
 [acceptance report](docs/engine-recovery-results.json) verifies 270 correlated
-requests. Run-wide API/model/work/time accounting belongs to the future workflow
-layer; this step enforces native per-request caps and recovery.
+requests. The budget ledger now provides run-wide API/model/work/time accounting;
+the engine enforces native per-request caps and recovery.
+
+## Harness foundation (tasks 1–2)
+
+Prepare an NWL23 opening position for future model input:
+
+```sh
+.venv/bin/python scripts/demo_decision_context.py
+```
+
+The [saved public view](docs/decision-context-demo.json) contains 12 candidate
+handles with move geometry, exact scores, and leaves. Preparation generates
+once, checks the fallback, and keeps the canonical pool on the host. Static
+equity and private arbiter state do not enter the model view. This demonstration
+makes no model request and commits no turn.
+
+The complete suite passes 695 tests: 644 offline and 51 native. Harness checks cover
+strict harness/provider records, manifest identity, capability and request-size
+limits, frozen presentation, stale handles, owned evidence, and the full NWL23
+prepare/compare/validate/commit path. Storage checks add crash/reopen, atomic
+rollback, writer contention, migration verification, and real NWL23 receipts.
+Accounting checks add shared caps, finish holds, cost settlement, unresolved
+usage, and deadlines across process exits and restart. Scripted-provider checks
+add explicit retries, raw invalid replies, cancellation, continuation, and ledger
+integration. See the
+[foundation guide](docs/harness-foundation.md) and
+[task checklist](docs/harness-task-checklist.md) for the remaining implementation.
+
+## Prompts and tool schemas (task 3)
+
+Save a readable model prompt from a real NWL23 position:
+
+```sh
+.venv/bin/python scripts/demo_decision_context.py --prompt-output docs/decision-prompt-demo.txt
+```
+
+The [prompt example](docs/decision-prompt-demo.txt) shows board premiums and
+blanks, visible actions, public inventory/history, and remaining limits.
+`build_model_request` creates the complete bounded prompt and exposes only
+selection on the final attempt. Packaged strict function schemas and the
+argument parser cover `select_move` and `compare_moves`. See the
+[prompt guide](docs/harness-prompts.md) for APIs, size bounds, snapshots, and
+native verification. Resource admission is implemented in Task 5; execution
+and provider calls remain later tasks. This demo makes no paid request.
+
+## Persistent run storage (task 4)
+
+`RunStore` saves campaigns, manifests, public observations, frozen candidate
+contexts, requests/replies, reservations, commit intent/receipts, and typed
+per-run events. Private local SQLite uses foreign keys, WAL/FULL durability,
+checksummed migrations, and a serialized writer/checkpoint lock. Identical
+retries are idempotent; conflicting IDs/revisions fail. See the
+[run-store guide](docs/harness-run-store.md) for usage and lifecycle rules.
+
+## Resource accounting (task 5)
+
+`BudgetLedger` reserves cost, call slots, native rollouts, and tool steps before
+execution. Every admission checks campaign/run/decision caps atomically. Saved
+rate cards and complete-input bounds price requests; malformed/refused replies
+remain billable and unknown usage keeps its full allowance. A durable finish
+hold protects final selection, and deadlines persist across restart.
+The [budget ledger guide](docs/harness-budget-ledger.md) explains the APIs,
+settlement rules, and caller order. Full game recovery remains later work.
+
+## Scripted provider (task 6)
+
+`ScriptedProvider` returns explicit selections, comparison requests, refusals,
+malformed/multiple actions, partial or missing usage, transport failures, and
+cancellable delayed replies. Each accepted request consumes one named step;
+retries require a new attempt. No API key, SDK, or network is used.
+
+```sh
+.venv/bin/python scripts/demo_scripted_provider.py
+.venv/bin/python scripts/demo_scripted_provider.py --scenario timeout
+```
+
+The demo uses the saved public NWL23 view and executes no tool or game commit.
+See the [scripted provider guide](docs/harness-scripted-provider.md) for scenario
+construction and ledger integration.
+
+## Typed tool execution (task 7)
+
+`ToolExecutor.execute(attempt_id)` reads one saved, accounted provider action.
+Selection resolves a visible handle and displayed evidence into an
+`AgentDecision`. Comparison admits a 60/300 total-rollout tier, clips it to
+remaining work/time, calls the native analysis adapter, and saves actual work
+and issued evidence. Bad actions fail before dispatch; uncertain work remains
+charged. Known receipts can be reused after reopening without another simulation.
+The [tool execution guide](docs/harness-tools.md) documents the API and caller
+order. Real NWL23 checks cover both tiers and verify selection does not commit
+a game. Task 8 connects these components in the [bounded decision loop](docs/harness-loop.md).
 
 ## Reference choices
 
@@ -341,3 +469,46 @@ The scoreless-turn limit must be configured explicitly for the chosen ruleset.
 Validation follows Pydantic's documented
 [strict mode](https://docs.pydantic.dev/2.10/concepts/strict_mode/) and
 [model validators](https://docs.pydantic.dev/2.10/concepts/validators/).
+
+## Bounded decision loop (Task 8)
+
+`DecisionLoop.decide(run_id, decision_id, observation)` prepares once, reserves
+model/tool work, saves replies before execution, and returns a durable canonical
+selection, static fallback, or abort. It bounds repair/retry attempts, protects
+final-selection capacity, and uses one decision deadline. Cancellation preserves
+uncertain charges and saves an abort; completed outcomes reopen without new work.
+See the [decision loop guide](docs/harness-loop.md). Task 9 adds [fixed workflows and fallback policies](docs/harness-policies.md).
+
+## Workflow presets and fallback (Task 9)
+
+`load_workflow("fast" | "standard" | "deep")` loads packaged configurations with
+1/2/3 model attempts, 0/1/2 comparisons, and 0/300/600 total rollouts. All allow
+early selection and expose selection only on the final request. Static fallback
+is the default; `fallback_policy="latest_comparison"` uses the newest full-coverage
+comparison batch or the verified static move. Outcomes retain selection origin,
+evidence, and failure reason. See the [policy guide](docs/harness-policies.md).
+Task 10 adds the [offline `decide` CLI](docs/harness-offline-cli.md).
+
+## Offline single-position command (Task 10)
+
+```sh
+.venv/bin/python -m scrabble_harness decide --database work/offline/private/runs.sqlite3
+```
+
+From the project directory, this uses the existing NWL23 profile and runs a
+scripted Standard compare/select decision. It prints a validated canonical
+move, evidence, and reconciled confirmed/unknown usage, and saves private records.
+It leaves the game unchanged and makes no provider network calls; all reported
+costs are synthetic. See the [CLI guide](docs/harness-offline-cli.md) and
+[real acceptance report](docs/offline-decision-demo.json). Task 11 adds the
+real provider adapter.
+
+## OpenAI provider adapter (Task 11)
+
+The optional `openai` extra pins the SDK for `OpenAIProvider`. It translates
+strict Responses function calls, correlates comparison results, preserves
+private encrypted continuation and reported token usage, and performs one
+request per admitted attempt with no automatic retries. Tests use the actual
+SDK with a fake HTTP transport. Core/offline commands still need no SDK or key.
+See the [provider guide](docs/harness-openai-provider.md). Task 12 verifies a real
+model, pricing, and token bounds before the first paid pilot.

@@ -1,6 +1,6 @@
 # Scrabble Harness — agent harness implementation plan
 
-Version 1.0 · October 7, 2026 · **Status: proposed implementation**
+Version 1.8 · October 11, 2026 · **Status: Harness Tasks 1–11 implemented; remaining work proposed**
 
 Build an LLM player that can request Scrabble analysis, choose a move, and finish
 each decision within declared resource limits. Measure whether its use of tools
@@ -12,6 +12,29 @@ This document is the implementation guide for the next phase. It replaces the
 remaining harness layout, workflow presets, and schedule in the broader
 [original implementation plan](scrabble-harness-technical-implementation-plan.md).
 The existing engine architecture remains the foundation.
+
+Use the [chronological task checklist](harness-task-checklist.md) to implement
+this plan one numbered task at a time, with completion criteria and milestone gates.
+
+The strict contracts and frozen decision context are now implemented. The
+[foundation guide](harness-foundation.md) documents the current API, seeded
+presentation, verified fallback, scoped evidence, and a runnable preparation
+demo. Task 3 now adds deterministic prompts, strict tool schemas, argument
+validation, and final-attempt selection controls; see the
+[prompt guide](harness-prompts.md). Task 4 adds private transactional persistence
+and typed audit events; see the [run-store guide](harness-run-store.md).
+Task 5 adds shared resource admission and durable budget accounting; see the
+[budget ledger guide](harness-budget-ledger.md). Task 6 adds a reproducible
+[scripted provider](harness-scripted-provider.md) for offline replies, failures,
+and cancellation. Task 7 adds [typed tool execution](harness-tools.md), bounded
+native comparisons, durable evidence, and canonical selection. Task 8 adds the [bounded decision loop](harness-loop.md), including repair,
+termination, fallback, and cancellation accounting. Task 9 adds [packaged workflows and fallback policies](harness-policies.md),
+including durable selection origins and evidence-backed comparison fallback.
+Task 10 adds the [offline single-position command](harness-offline-cli.md),
+with real NWL23 analysis, canonical validation, and reconciled resources.
+Task 11 adds the [OpenAI Responses adapter](harness-openai-provider.md), pinned
+optional SDK, private stateless continuation, and fake-transport acceptance.
+Task 12 verifies a real model, pricing, and token bounds before paid execution.
 
 ## 1. Starting point and scope
 
@@ -153,7 +176,7 @@ async def decide(
     observation: PlayerObservation,
     analysis: AnalysisEngine,
     config: HarnessConfig,
-    ledger: ResourceLedger,
+    ledger: BudgetLedger,
     store: RunStore,
 ) -> DecisionOutcome: ...
 ```
@@ -313,7 +336,7 @@ latency guarantee.
 ## 9. Four resource limits and conservative accounting
 
 Enforce API cost, dispatched model attempts, native rollout work, and elapsed
-time independently, at both decision and run level. Keep a separate tool-step
+time independently, across campaign, run, and decision scopes. Keep a separate tool-step
 cap for repeated invalid or cheap requests. Static generation and previews
 consume time and operation counts; they are not candidate-rollout work.
 
@@ -326,8 +349,9 @@ when configuring the pilot; do not hard-code prices into application logic.
 Before dispatch, transact a reservation for bounded input cost plus the maximum
 output cost and a safety margin. Use a verified token-count method or a
 documented conservative bound covering tool schemas and continuation items;
-refuse dispatch if no defensible bound is available. Reserve using uncached
-input rates, then settle cache discounts only from reported usage. The ledger
+refuse dispatch if no defensible bound is available. Reserve using the largest
+applicable input/cache-read/cache-write rate, then settle categories from reported
+usage; cache writes may exceed ordinary input rates. The ledger
 is a dispatch bound based on a rate card, not a guarantee of provider invoices.
 
 Reservation states: `reserved -> dispatched -> settled`, or
@@ -348,15 +372,20 @@ decision scopes, preventing competing jobs from overspending their shared caps. 
 small bounded semaphore for independent position jobs. Single-thread native
 settings remain unchanged for controlled comparisons.
 
+Task 5 implements this admission/accounting foundation; see the
+[budget ledger guide](harness-budget-ledger.md) for the APIs and verified behavior.
+
 ## 10. Storage, recovery, and replay
 
 SQLite is authoritative for harness events and accounting. Tables:
 
-- `campaigns`: project-wide spending cap and shared reservation totals.
+- `campaigns`: project-wide resource caps; Task 5 derives shared reservation totals.
 - `runs`: campaign ID, execution manifest, status, aggregate caps, creation time.
 - `decisions`: observation, frozen pool/handle map, workflow, status, outcome.
 - `attempts`: unique attempt ID, dispatch state, request hash, provider IDs, response, usage.
-- `reservations`: cost/work/call allocations and settlement state.
+- `reservations`: saved bounds, cost/work/call allocations, native results, settlement state.
+- `finish_holds`: durable future-selection cost and call allowances.
+- `budget_clocks`: persisted elapsed floors and wall-clock watermarks for each scope.
 - `events`: per-run sequence, decision ID, type, validated payload.
 - `commits`: decision ID, game ID, expected/new revision, move, checkpoint ID.
 
@@ -365,7 +394,10 @@ intents and `(game_id, new_revision)` for confirmations, and durable local
 transactions. Hold a per-game advisory filesystem lock for the active runner;
 use `fcntl` on the initial macOS/Linux target. Do not permit two runners to
 advance the same game. Ledger admission still uses database transactions.
-Configure WAL with `synchronous=FULL`; avoid a network-mounted run database. [SQLite WAL documentation](https://www.sqlite.org/wal.html).
+Configure WAL with `synchronous=FULL`; avoid a network-mounted run database.
+Task 4 also serializes managed writes/checkpoints with a database advisory lock
+on the current runtime; see the [run-store guide](harness-run-store.md).
+[SQLite WAL documentation](https://www.sqlite.org/wal.html).
 The existing private `CheckpointStore` remains authoritative for game state;
 the existing `TraceJournal` remains optional native diagnostics.
 
@@ -551,3 +583,4 @@ models and simple engine baselines have comparable frozen results; and the
 report attributes improvements, failures, fallback use, and resource costs
 accurately. Include a learned router only if its measured contribution supports
 the extra complexity.
+

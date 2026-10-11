@@ -1,0 +1,39 @@
+{
+  "purpose": "Scripted provider demonstration; synthetic usage; no tools executed or game committed",
+  "scenario": "select",
+  "api_requests": 0,
+  "api_cost_microusd": 0,
+  "reply": {
+    "schema_version": 1,
+    "attempt_id": "scripted-demo-attempt",
+    "decision_id": "context-demo-decision-1",
+    "observation_id": "obs_v1_34a3cb333dc0aa12b9de259930267a251a7c8af35b9e2b19ab12577b912cb2e5",
+    "provider": "scripted",
+    "resolved_model": "offline-v1",
+    "response_id": "scripted-demo-response",
+    "request_id": "scripted-demo-request",
+    "status": "completed",
+    "tool_calls": [
+      {
+        "schema_version": 1,
+        "call_id": "scripted-demo-call",
+        "name": "select_move",
+        "arguments_json": "{\"brief_note\":\"\",\"candidate_handle\":\"c01\",\"evidence_ids\":[]}"
+      }
+    ],
+    "visible_text": "",
+    "usage": {
+      "schema_version": 1,
+      "input_tokens": 100,
+      "cached_input_tokens": null,
+      "output_tokens": 10,
+      "reasoning_output_tokens": null,
+      "total_tokens": null,
+      "raw_usage_json": null
+    },
+    "continuation": null,
+    "error_category": null
+  },
+  "call_state": "replied",
+  "remaining_script_steps": 0
+}

@@ -1,0 +1,72 @@
+You are playing two-player English Scrabble. Choose a strong move to maximize your chance of winning.
+Call exactly one offered tool per reply. Choose only a visible candidate handle; do not invent moves.
+select_move finishes this decision. compare_moves requests estimated analysis and requires a later selection.
+Cite only evidence IDs issued in this decision; otherwise use []. Keep brief_note at most 500 characters; an empty note is allowed. A short justification is enough.
+The board, own rack, scores, and public unseen inventory are available. Opponent tiles and draw order are unknown. Unseen counts combine the unknown opponent rack and bag; they are not bag-only counts.
+Candidates are displayed in seeded order. Handle numbers do not indicate move quality. Exact move scores are immediate scores, not predictions of final outcome. Comparison values are bounded estimates.
+Use only the information below. Respect the remaining limits and finish with select_move.
+
+PROTOCOL: scrabble-decision-v1; scrabble-tools-v1; candidate-view-v1
+
+POSITION
+Decision: "context-demo-decision-1"; observation: obs_v1_34a3cb333dc0aa12b9de259930267a251a7c8af35b9e2b19ab12577b912cb2e5
+Game: "context-demo-42"; revision: 0; player: 0; active player: 0
+Ruleset: "english-six-scoreless-v1"; lexicon: "NWL23"
+Scores: you=0, opponent=0; scoreless turns=0
+Own rack (7/7): ?AIILOU
+Bag size: 86; opponent rack size: 7
+Public unseen physical tiles (opponent rack + bag; missing symbols have count 0): ?:1, A:8, B:2, C:2, D:4, E:12, F:2, G:3, H:2, I:7, J:1, K:1, L:3, M:2, N:6, O:7, P:2, Q:1, R:6, S:4, T:6, U:3, V:2, W:2, X:1, Y:2, Z:1
+
+BOARD
+Coordinates: columns A-O, rows 1-15; A1 = row 0, column 0.
+Uppercase letters are ordinary tiles; lowercase letters are assigned blanks worth 0 points; rack ? is an unassigned blank.
+Empty squares: .. normal, DL double letter, TL triple letter, DW double word, TW triple word; center H8 is DW.
+Premiums apply only to newly placed tiles. Occupied squares show letters; their premiums cannot be reused.
+     A  B  C  D  E  F  G  H  I  J  K  L  M  N  O
+ 1  TW .. .. DL .. .. .. TW .. .. .. DL .. .. TW
+ 2  .. DW .. .. .. TL .. .. .. TL .. .. .. DW ..
+ 3  .. .. DW .. .. .. DL .. DL .. .. .. DW .. ..
+ 4  DL .. .. DW .. .. .. DL .. .. .. DW .. .. DL
+ 5  .. .. .. .. DW .. .. .. .. .. DW .. .. .. ..
+ 6  .. TL .. .. .. TL .. .. .. TL .. .. .. TL ..
+ 7  .. .. DL .. .. .. DL .. DL .. .. .. DL .. ..
+ 8  TW .. .. DL .. .. .. DW .. .. .. DL .. .. TW
+ 9  .. .. DL .. .. .. DL .. DL .. .. .. DL .. ..
+10  .. TL .. .. .. TL .. .. .. TL .. .. .. TL ..
+11  .. .. .. .. DW .. .. .. .. .. DW .. .. .. ..
+12  DL .. .. DW .. .. .. DL .. .. .. DW .. .. DL
+13  .. .. DW .. .. .. DL .. DL .. .. .. DW .. ..
+14  .. DW .. .. .. TL .. .. .. TL .. .. .. DW ..
+15  TW .. .. DL .. .. .. TW .. .. .. DL .. .. TW
+
+VISIBLE CANDIDATES (new tiles only; existing board letters may lie between them)
+c01 | pass | exact score=0 | leave=?AIILOU
+c02 | place D8=A E8=I F8=O G8=L H8=I | exact score=12 | leave=?U
+c03 | place E8=A F8=I G8=O H8=L I8=I | exact score=10 | leave=?U
+c04 | place H8=A I8=I J8=O K8=L L8=I | exact score=12 | leave=?U
+c05 | place G8=A H8=I I8=O J8=L K8=I | exact score=10 | leave=?U
+c06 | exchange IIOU | exact score=0 | leave=?AL
+c07 | exchange AIOU | exact score=0 | leave=?IL
+c08 | exchange IILOU | exact score=0 | leave=?A
+c09 | place H8=I I8=L J8=I K8=A | exact score=8 | leave=?OU
+c10 | exchange IIU | exact score=0 | leave=?ALO
+c11 | place F8=A G8=I H8=O I8=L J8=I | exact score=10 | leave=?U
+c12 | exchange IOU | exact score=0 | leave=?AIL
+
+PUBLIC HISTORY (last 8 of available retained turns; shown=0, omitted=0)
+(none shown)
+
+ISSUED COMPARISON EVIDENCE
+(none)
+
+REMAINING LIMITS
+Model attempts including this request: 2
+Comparison tool steps: 1; native work: 300 candidate_rollout
+API cost allowance: 30000 microusd (1 USD = 1000000 microusd)
+Decision time remaining: 30 seconds; finish reserve: 2 seconds
+
+AVAILABLE TOOLS
+compare_moves: 2-4 distinct visible handles; one offered tier; then select on a later request.
+Tier light: up to 60 total candidate_rollout; up to 8 seconds.
+Tier standard: up to 300 total candidate_rollout; up to 8 seconds.
+select_move: choose one visible handle now; comparison is optional.

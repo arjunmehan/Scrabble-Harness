@@ -10,11 +10,16 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = ["pydantic>=2.10,<3"]
 
+[project.scripts]
+scrabble-harness = "scrabble_harness.cli:main"
+
 [project.optional-dependencies]
+openai = ["openai==3.29.0"]
 dev = [
     "build>=1.2,<2",
     "hypothesis>=6.100,<7",
     "pytest>=8.3,<10",
+    "jsonschema>=4.23,<5",
 ]
 
 [tool.setuptools]
@@ -29,6 +34,8 @@ include = ["scrabble_harness*"]
 
 [tool.setuptools.package-data]
 scrabble_harness = ["py.typed"]
+"scrabble_harness.harness" = ["schemas/*.json", "presets/*.json"]
+"scrabble_harness.runs.migrations" = ["*.sql"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -36,4 +43,3 @@ addopts = "-ra --strict-config --strict-markers"
 markers = [
     "native: requires a built native engine and configured fixture data",
 ]
-
